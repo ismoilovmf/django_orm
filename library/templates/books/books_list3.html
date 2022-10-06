@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог книг{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1><a href="/books">Каталог</a></h1>
+        </div>
+        {% for p in page %}
+        <div class="row">
+            <div class="book col-md-4">
+                <h2><a href={{ p.get_url }}>{{ p.name }}</a></h2>
+                <p>Автор: {{ p.author }}</p>
+                <p>Дата публикации: {{ p.pub_date }}</p>
+            </div>
+        </div>
+        <a href="{{ prev_date }}">{{ prev_date }}</a>
+        <br>
+        <a href="{{ next_date }}">{{ next_date }}</a>
+    {% endfor %}
+    </div>
+{% endblock %}
