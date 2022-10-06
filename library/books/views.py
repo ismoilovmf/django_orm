@@ -14,9 +14,8 @@ def books(request):
     context = {'books': Book.objects.all()}
     return render(request, template, context)
 
-def book_view(request, data="2018-09-07"):
+def book_view(request, data):
     template = 'books/books_list3.html'
-    #.filter(order_by='-pub_date')
     books_list = Book.objects.all().filter(pub_date=data)
     books = books_list.all().order_by('-pub_date')
 
